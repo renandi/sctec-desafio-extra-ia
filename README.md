@@ -69,7 +69,7 @@ Para verificar como os dados numéricos se relacionamn entre si, foi usado o mé
 
 Tendo a matriz de correlação, extraiu-se a diagonal principal para eliminar o fator de correlação 1, já que como os dados tem uma correlação baixa, a correlação unitária de cada coluna com ela mesma afetaria a legenda de cores do mapa de calor a seguir, atrapalhando a correta visualização de possíveis conexões entre os dados.
 
-<img src="./images/corr-heatmap.png" alt="Mapa de calor mostrando correlação entre dados numéricos" width="500"/>
+<img src="./images/corr-heatmap.png" alt="Mapa de calor mostrando correlação entre dados numéricos" width="800"/>
 
 A partir deste mapa de calor, podemos notar que há uma correlação positiva entre a distância e o valor da corrida, o que é esperado, já que quando maior a distância, maior espera-se que seja o preço da corrida.
 
