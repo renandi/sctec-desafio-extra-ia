@@ -102,6 +102,8 @@ plt.savefig('images/rides-by-day-of-month.png')
 plt.show()
 
 
+# ### Distribuição de corridas por dia da semana
+
 # In[12]:
 
 
@@ -139,7 +141,7 @@ df["Booking Status"].value_counts()
 
 # ### Analisando proporção de cancelamentos
 
-# In[15]:
+# In[72]:
 
 
 # Distribuição de status das corridas completadas e canceladas
@@ -147,7 +149,7 @@ df["Booking Status"].value_counts()
 status_counts = df["Booking Status"].value_counts()
 status_labels_pt = ["Completa", "Canceladas pelo motorista", "Motorista não encontrado", "Canceladas pelo cliente", "Incompletas"]
 
-plt.figure(figsize=(5, 5))
+plt.figure(figsize=(8, 8))
 plt.pie(
     status_counts,
     labels = status_labels_pt,
@@ -186,7 +188,7 @@ plt.show()
 
 # ### Verificando relação entre tempo de espera e cancelamento
 
-# In[49]:
+# In[71]:
 
 
 # Verificar relação entre tempo de chegada do motorista e cancelamentos por clientes
@@ -196,7 +198,7 @@ df_comparacao = df[df["Booking Status"].isin(["Completed", "Cancelled by Custome
 sns.boxplot(data=df_comparacao, x="Booking Status", y="Avg VTAT", palette="Set2", hue="Booking Status")
 plt.title("Tempo de Chegada do Motorista vs. Status da Corrida")
 plt.xlabel("Status da Corrida")
-plt.ylabel("Tempo de Chegada (Minutos)")
+plt.ylabel("Tempo de Chegada (Avg VTAT) (Minutos)")
 
 plt.savefig("images/avtat-box.png")
 plt.show()
@@ -216,29 +218,33 @@ corr = df_corr.corr()
 corr
 
 
-# In[64]:
+# In[73]:
 
 
-# Remover diagonal e triangulo superior para melhor visualização no heatmap
+# Remover diagonal para melhor visualização no heatmap (eliminar correlação 1)
 
-tri = corr.where(np.tril(np.ones(corr.shape), k=0).astype(bool))
-tri.dropna(how='all').dropna(axis=1, how='all')
-tri.replace(1, np.nan, inplace=True)
+corr.replace(1, np.nan, inplace=True)
 
 
-# In[68]:
+# In[78]:
 
 
+plt.figure(figsize=(12, 12))
 sns.heatmap(
-    tri, 
-    annot=tri, 
+    corr, 
+    annot=True, 
     fmt=".5f", 
     linewidths=.5,
-    # vmin=tri.min().min(), # O mínimo real dos seus dados
-    # vmax=tri.max().max(), # O máximo real dos seus dados
     cmap="viridis"
 )
 plt.title("Correlação entre dados numéricos")
 
 plt.savefig("images/corr-heatmap.png")
 plt.show()
+
+
+# In[ ]:
+
+
+
+
