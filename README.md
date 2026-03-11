@@ -1,23 +1,34 @@
 # Análise Exploratória de Dados: Dataset Uber
 
-# Introdução
+##  Introdução
 
-Este projeto tem como finalidade servir de avaliação como desafio extra para obtenção de pontos para o curso de Introdução à Inteligência Artificial do programa SC TEC.
+Este projeto foi desenvolvido como um desafio extra na trilha de Inteligência Artificial do programa SC TEC. O objetivo foi realizar uma análise em um dataset de corridas da Uber para identificar padrões de consumo e comportamento do serviço.
 
-O objetivo é realizar uma análise exploratória de dados no dataset da Uber disponível na plataforma Kaggle (https://www.kaggle.com/datasets/yashdevladdha/uber-ride-analytics-dashboard/data)
+O dataset está disponível na plataforma Kaggle ([Uber Data Analytics Dashboard](https://www.kaggle.com/datasets/yashdevladdha/uber-ride-analytics-dashboard/data)).
 
-O código foi desenvolvido em um notebook Jupyter localmente.
+## 🚀 Tecnologias Utilizadas
+* **Python**: Linguagem base para manipulação de dados.
+* **Pandas**: Limpeza e estruturação do dataset.
+* **Matplotlib & Seaborn**: Geração de gráficos estatísticos e visualizações.
+* **Jupyter Notebook**: Ambiente de desenvolvimento para análise interativa.
 
-### Bibliotecas usadas
+## 📊 Principais Insights
+1. **Status das Corridas**: O gráfico de pizza demonstrou que a maioria das corridas é concluída, mas há uma parcela significativa de cancelamentos que mereceu investigação.
+2. **Fatores de Cancelamento**: Através do box plot, notamos que o tempo de espera influencia diretamente na taxa de cancelamento por parte do usuário.
+3. **Correlação entre tempo de espera e notas de avaliação**: Através da matriz de correlação e mapa de calor, percebemos uma correlação negativa entre tempo de espera e avaliação, ou seja, quanto maior o tempo de espera, maiores as chances de notas menores tanto para motoristas quanto para clientes.
 
-Foram usadas as seguintes bibliotecas:
-
-- pandas
-- matplotlib
-- seaborn
-- numpy
+## 📂 Como Executar o Projeto
+1. Certifique-se de ter o Python e o Jupyter instalados.
+2. Instale as dependências: `pip install pandas seaborn matplotlib`.
+3. Abra o arquivo `EDA-UberDataset.ipynb` e execute as células.
 
 # Análise
+
+## Pré-processamento
+
+Algumas colunas que não seriam usadas nessa análise foram apagadas: "Booking ID", "Customer ID", "Pickup Location" e "Drop Location".
+
+Antes de usar as datas e horas presentes no dataset, criou-se uma coluna do tipo datetime usando a função do pandas `pd.to_datetime()` para que se possa trabalhar mais facilmente com essa informação.
 
 ## Análise de distribuição temporal de corridas
 
@@ -25,7 +36,6 @@ Inicialmente deseja-se investigar qual a relação entre o número total de corr
 
 Foram analisados os dados mês a mês, ao longo do mês, ao longo da semana e ao longo do dia para investigar se há alguns padrões nos dados.
 
-Antes de usar as datas e horas presentes no dataset, criou-se uma coluna do tipo datetime usando a função do pandas `pd.to_datetime()` para que se possa trabalhar mais facilmente com essa informação.
 
 Para esse tipo de análise, foram gerados gráficos temporais a partir dos dados, mostrados a seguir.
 
